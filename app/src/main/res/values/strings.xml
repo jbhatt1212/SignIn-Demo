@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SignIn Demo</string>
+    <string name="google_sign_in">Google sign in\n</string>
+    <string name="web_client_id">516124834066-fh8oe38r65631nes72k7vogu4g7p4p4l.apps.googleusercontent.com\n</string>
+</resources>
