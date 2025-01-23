@@ -1,0 +1,36 @@
+  <AutoCompleteTextView
+            android:id="@+id/acToNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_8"
+            android:fontFamily="@font/product_sans_regular"
+            android:hint="@string/placeholder_type_here"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textAlignment="textStart"
+            android:textColor="@color/clr_text"
+            android:textColorHint="@color/clr_text_hint"
+            android:textSize="@dimen/txt_size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivAddContact"
+            app:layout_constraintStart_toEndOf="@id/tvTo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+binding.acToNumber.setOnEditorActionListener(object : TextView.OnEditorActionListener {
+            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
+                binding.acToNumber.setRawInputType(Configuration.KEYBOARD_QWERTY)
+                when (actionId) {
+                    EditorInfo.IME_ACTION_DONE -> {
+                        Logger.d(TAG, "onEditorAction DONE")
+                        binding.acToNumber.visibility = View.GONE
+                        binding.clToNumberView.visibility = View.VISIBLE
+                        destinationNumber = binding.acToNumber.text.toString()
+                        binding.tvToNumber.text = getFormattedNumber(destinationNumber)
+                      binding.acToNumber.setRawInputType(TYPE_TEXT_FLAG_AUTO_COMPLETE);
+                        return true
+                    }
+                }
+                return true
+            }
+        })
